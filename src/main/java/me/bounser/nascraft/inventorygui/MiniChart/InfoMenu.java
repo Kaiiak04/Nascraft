@@ -10,7 +10,7 @@ import me.bounser.nascraft.inventorygui.MarketMenuManager;
 import me.bounser.nascraft.inventorygui.MenuPage;
 import me.bounser.nascraft.market.unit.Item;
 import me.bounser.nascraft.scheduler.FoliaScheduler;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.entity.Player;
@@ -53,7 +53,7 @@ public class InfoMenu implements MenuPage {
 
         CartographyWindow window = CartographyWindow.single()
                 .setViewer(player)
-                .setTitle(LegacyComponentSerializer.legacySection().serialize(title))
+                .setTitle(LegacyText.LEGACY.serialize(title))
                 .setGui(gui)
                 .build();
 

@@ -13,7 +13,7 @@ import me.bounser.nascraft.market.limitorders.LimitOrder;
 import me.bounser.nascraft.market.limitorders.LimitOrdersManager;
 import me.bounser.nascraft.market.limitorders.OrderType;
 import me.bounser.nascraft.market.unit.Item;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -87,7 +87,7 @@ public class BuySellMenu implements MenuPage{
                     config.getBuySellBackSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getBuySellBackMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(backComponent)
+                            LegacyText.LEGACY.serialize(backComponent)
                     ));
         }
 
@@ -108,14 +108,14 @@ public class BuySellMenu implements MenuPage{
                 for (String line : Lang.get().message(Message.GUI_BUYSELL_ALERTS_LORE_SETUP)
                         .replace("[PRICE]", Formatter.format(item.getCurrency(), Math.abs(alerts.get(item)), Style.ROUND_BASIC)).split("\\n")) {
                     Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                    lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                    lore.add(LegacyText.LEGACY.serialize(loreComponent));
                 }
 
                 gui.setItem(
                         config.getAlertsBuySellSlot(),
                         MarketMenuManager.getInstance().generateItemStack(
                                 config.getAlertsBuySellMaterial(),
-                                LegacyComponentSerializer.legacySection().serialize(alert),
+                                LegacyText.LEGACY.serialize(alert),
                                 lore
                         ));
 
@@ -124,14 +124,14 @@ public class BuySellMenu implements MenuPage{
 
                 for (String line : Lang.get().message(linked ? Message.GUI_BUYSELL_ALERTS_LORE_LINKED : Message.GUI_BUYSELL_ALERTS_LORE_NOT_LINKED).split("\\n")) {
                     Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                    lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                    lore.add(LegacyText.LEGACY.serialize(loreComponent));
                 }
 
                 gui.setItem(
                         config.getAlertsBuySellSlot(),
                         MarketMenuManager.getInstance().generateItemStack(
                                 config.getAlertsBuySellMaterial(),
-                                LegacyComponentSerializer.legacySection().serialize(alert),
+                                LegacyText.LEGACY.serialize(alert),
                                 lore
                         ));
             }
@@ -198,7 +198,7 @@ public class BuySellMenu implements MenuPage{
 
                 for (String line : limitLore.split("\\n")) {
                     Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                    lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                    lore.add(LegacyText.LEGACY.serialize(loreComponent));
                 }
 
                 limitComponent = MiniMessage.miniMessage().deserialize(Lang.get().message(Message.GUI_BUYSELL_LIMIT_NAME_UNSET));
@@ -209,7 +209,7 @@ public class BuySellMenu implements MenuPage{
 
                 for (String line : Lang.get().message(Message.GUI_BUYSELL_LIMIT_LORE_SET).split("\\n")) {
                     Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                    lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                    lore.add(LegacyText.LEGACY.serialize(loreComponent));
                 }
             }
 
@@ -217,7 +217,7 @@ public class BuySellMenu implements MenuPage{
                     config.getLimitOrdersBuySellSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getLimitOrdersBuySellMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(limitComponent),
+                            LegacyText.LEGACY.serialize(limitComponent),
                             lore
                     ));
         }
@@ -231,14 +231,14 @@ public class BuySellMenu implements MenuPage{
             lore.clear();
             for (String line : Lang.get().message(Message.GUI_BUYSELL_INFO_LORE).split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             gui.setItem(
                     config.getInfoBuySellSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getInfoBuySellMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(information),
+                            LegacyText.LEGACY.serialize(information),
                             lore
                     ));
         }
@@ -249,7 +249,7 @@ public class BuySellMenu implements MenuPage{
 
         ItemStack filler = MarketMenuManager.getInstance().generateItemStack(
                 config.getBuySellFillersMaterial(),
-                LegacyComponentSerializer.legacySection().serialize(fillerComponent)
+                LegacyText.LEGACY.serialize(fillerComponent)
         );
 
         for (int i : config.getBuySellFillersSlots())
@@ -272,12 +272,12 @@ public class BuySellMenu implements MenuPage{
 
             for (String line : buyLore.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             ItemStack buyButton = MarketMenuManager.getInstance().generateItemStack(
                     config.getBuySellBuyMaterial(),
-                    LegacyComponentSerializer.legacySection().serialize(buyComponent),
+                    LegacyText.LEGACY.serialize(buyComponent),
                     lore
             );
 
@@ -303,12 +303,12 @@ public class BuySellMenu implements MenuPage{
 
             for (String line : sellLore.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             ItemStack sellButton = MarketMenuManager.getInstance().generateItemStack(
                     config.getBuySellSellMaterial(),
-                    LegacyComponentSerializer.legacySection().serialize(buyComponent),
+                    LegacyText.LEGACY.serialize(buyComponent),
                     lore
             );
 
@@ -360,14 +360,14 @@ public class BuySellMenu implements MenuPage{
                 for (String line : Lang.get().message(Message.GUI_BUYSELL_ALERTS_LORE_SETUP)
                         .replace("[PRICE]", Formatter.format(item.getCurrency(), Math.abs(alerts.get(item)), Style.ROUND_BASIC)).split("\\n")) {
                     Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                    lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                    lore.add(LegacyText.LEGACY.serialize(loreComponent));
                 }
 
                 gui.setItem(
                         config.getAlertsBuySellSlot(),
                         MarketMenuManager.getInstance().generateItemStack(
                                 config.getAlertsBuySellMaterial(),
-                                LegacyComponentSerializer.legacySection().serialize(alert),
+                                LegacyText.LEGACY.serialize(alert),
                                 lore
                         ));
 
@@ -376,14 +376,14 @@ public class BuySellMenu implements MenuPage{
 
                 for (String line : Lang.get().message(linked ? Message.GUI_BUYSELL_ALERTS_LORE_LINKED : Message.GUI_BUYSELL_ALERTS_LORE_NOT_LINKED).split("\\n")) {
                     Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                    lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                    lore.add(LegacyText.LEGACY.serialize(loreComponent));
                 }
 
                 gui.setItem(
                         config.getAlertsBuySellSlot(),
                         MarketMenuManager.getInstance().generateItemStack(
                                 config.getAlertsBuySellMaterial(),
-                                LegacyComponentSerializer.legacySection().serialize(alert),
+                                LegacyText.LEGACY.serialize(alert),
                                 lore
                         ));
             }
@@ -405,12 +405,12 @@ public class BuySellMenu implements MenuPage{
 
             for (String line : buyLore.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             ItemStack buyButton = MarketMenuManager.getInstance().generateItemStack(
                     config.getBuySellBuyMaterial(),
-                    LegacyComponentSerializer.legacySection().serialize(buyComponent),
+                    LegacyText.LEGACY.serialize(buyComponent),
                     lore
             );
 
@@ -436,12 +436,12 @@ public class BuySellMenu implements MenuPage{
 
             for (String line : sellLore.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             ItemStack sellButton = MarketMenuManager.getInstance().generateItemStack(
                     config.getBuySellSellMaterial(),
-                    LegacyComponentSerializer.legacySection().serialize(buyComponent),
+                    LegacyText.LEGACY.serialize(buyComponent),
                     lore
             );
 

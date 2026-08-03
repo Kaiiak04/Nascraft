@@ -12,7 +12,7 @@ import me.bounser.nascraft.managers.DebtManager;
 import me.bounser.nascraft.managers.currencies.CurrenciesManager;
 import me.bounser.nascraft.managers.currencies.Currency;
 import me.bounser.nascraft.portfolio.PortfoliosManager;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -46,7 +46,7 @@ public class DebtMenu implements MenuPage {
 
         Component title = MiniMessage.miniMessage().deserialize(Lang.get().message(Message.PORTFOLIO_DEBT_TITLE));
 
-        gui = Bukkit.createInventory(null, config.getDebtSize(), LegacyComponentSerializer.legacySection().serialize(title));
+        gui = Bukkit.createInventory(null, config.getDebtSize(), LegacyText.LEGACY.serialize(title));
 
         // Back button
 
@@ -57,7 +57,7 @@ public class DebtMenu implements MenuPage {
                     config.getDebtBackSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getDebtBackMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(backComponent)
+                            LegacyText.LEGACY.serialize(backComponent)
                     ));
         }
 
@@ -67,7 +67,7 @@ public class DebtMenu implements MenuPage {
 
         ItemStack filler = MarketMenuManager.getInstance().generateItemStack(
                 config.getDebtFillersMaterial(),
-                LegacyComponentSerializer.legacySection().serialize(fillerComponent)
+                LegacyText.LEGACY.serialize(fillerComponent)
         );
 
         for (int i : config.getDebtFillersSlots())
@@ -82,14 +82,14 @@ public class DebtMenu implements MenuPage {
             List<String> lore = new ArrayList<>();
             for (String line : Lang.get().message(Message.PORTFOLIO_DEBT_EXP_LORE).split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             gui.setItem(
                     config.getDebtExpSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getDebtExpMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(information),
+                            LegacyText.LEGACY.serialize(information),
                             lore
                     ));
         }
@@ -170,14 +170,14 @@ public class DebtMenu implements MenuPage {
 
             for (String line : infoLore.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             gui.setItem(
                     config.getDebtInfoSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getDebtInfoMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(information),
+                            LegacyText.LEGACY.serialize(information),
                             lore
                     ));
         }
@@ -193,14 +193,14 @@ public class DebtMenu implements MenuPage {
 
             for (String line : repayAllLore.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             gui.setItem(
                     config.getDebtRepayAllSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getDebtRepayAllMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(information),
+                            LegacyText.LEGACY.serialize(information),
                             lore
                     ));
         }
@@ -216,14 +216,14 @@ public class DebtMenu implements MenuPage {
 
             for (String line : repayCustom.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             gui.setItem(
                     config.getDebtRepaySlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getDebtRepayMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(information),
+                            LegacyText.LEGACY.serialize(information),
                             lore
                     ));
         }
@@ -243,14 +243,14 @@ public class DebtMenu implements MenuPage {
 
             for (String line : getMaxLoan.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             gui.setItem(
                     config.getDebtMaxLoanSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getDebtMaxLoanMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(information),
+                            LegacyText.LEGACY.serialize(information),
                             lore
                     ));
         }
@@ -267,14 +267,14 @@ public class DebtMenu implements MenuPage {
 
             for (String line : customString.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             gui.setItem(
                     config.getDebtCustomSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getDebtCustomMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(information),
+                            LegacyText.LEGACY.serialize(information),
                             lore
                     ));
         }

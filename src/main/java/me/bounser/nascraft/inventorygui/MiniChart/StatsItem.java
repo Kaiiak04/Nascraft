@@ -6,7 +6,7 @@ import me.bounser.nascraft.config.lang.Message;
 import me.bounser.nascraft.formatter.Formatter;
 import me.bounser.nascraft.formatter.Style;
 import me.bounser.nascraft.market.unit.Item;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.entity.Player;
@@ -85,11 +85,11 @@ public class StatsItem extends AbstractItem {
 
         for (String line : loreBase.split("\\n")) {
             Component componentLine = MiniMessage.miniMessage().deserialize(line);
-            lore.add(LegacyComponentSerializer.legacySection().serialize(componentLine));
+            lore.add(LegacyText.LEGACY.serialize(componentLine));
         }
 
         return new ItemBuilder(item.getItemStack().getType())
-                .setDisplayName(LegacyComponentSerializer.legacySection().serialize(title))
+                .setDisplayName(LegacyText.LEGACY.serialize(title))
                 .addLegacyLoreLines(lore);
 
     }

@@ -25,7 +25,7 @@ import me.bounser.nascraft.config.Config;
 import me.bounser.nascraft.formatter.Style;
 import me.bounser.nascraft.market.unit.stats.Instant;
 import me.bounser.nascraft.market.unit.stats.ItemStats;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.minimessage.MiniMessage;
@@ -127,14 +127,14 @@ public class Item {
 
         Component miniMessageAlias = MiniMessage.miniMessage().deserialize(alias);
 
-        this.formattedAlias = LegacyComponentSerializer.legacySection().serialize(miniMessageAlias);
+        this.formattedAlias = LegacyText.LEGACY.serialize(miniMessageAlias);
 
         this.alias = extractPlainText(miniMessageAlias);
 
         if (alias.equals(formattedAlias)) {
             taggedAlias = Lang.get().message(Message.DEFAULT_ITEM_FORMAT).replace("[ALIAS]", alias);
             Component defaultMiniMessageAlias = MiniMessage.miniMessage().deserialize(taggedAlias);
-            formattedAlias = LegacyComponentSerializer.legacySection().serialize(defaultMiniMessageAlias);
+            formattedAlias = LegacyText.LEGACY.serialize(defaultMiniMessageAlias);
         }
     }
 

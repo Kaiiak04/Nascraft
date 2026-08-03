@@ -11,7 +11,7 @@ import me.bounser.nascraft.managers.currencies.Currency;
 import me.bounser.nascraft.market.MarketManager;
 import me.bounser.nascraft.market.resources.Category;
 import me.bounser.nascraft.market.unit.Item;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -187,7 +187,7 @@ public class EditItemMenu {
         inventory.setItem(4,
                 getItemStackOfOption(Material.GOLD_INGOT,
                         "Initial Price " + ChatColor.UNDERLINE + "(REQUIRED)",
-                        Arrays.asList(ChatColor.GRAY + "Value: " + LegacyComponentSerializer.legacySection().serialize(priceComponent),
+                        Arrays.asList(ChatColor.GRAY + "Value: " + LegacyText.LEGACY.serialize(priceComponent),
                                 "",
                                 ChatColor.GRAY + "The initial price of the item gives a point",
                                 ChatColor.GRAY + "of initial stability at neutral internal stock (0)",
@@ -254,7 +254,7 @@ public class EditItemMenu {
         inventory.setItem(22,
                 getItemStackOfOption(Material.BEDROCK,
                 "Support",
-                        Arrays.asList(ChatColor.GRAY + "Value: " + (support == 0 ? ChatColor.RED + "DISABLED" : LegacyComponentSerializer.legacySection().serialize(supportComponent)),
+                        Arrays.asList(ChatColor.GRAY + "Value: " + (support == 0 ? ChatColor.RED + "DISABLED" : LegacyText.LEGACY.serialize(supportComponent)),
                                 "",
                                 ChatColor.GRAY + "If the noise is enabled, then the price of the",
                                 ChatColor.GRAY + "item will slowly tend to stay " + ChatColor.UNDERLINE + "ABOVE this value.",
@@ -267,7 +267,7 @@ public class EditItemMenu {
         inventory.setItem(23,
                 getItemStackOfOption(Material.WHITE_WOOL,
                         "Resistance",
-                        Arrays.asList(ChatColor.GRAY + "Value: " + (resistance == 0 ? ChatColor.RED + "DISABLED" : LegacyComponentSerializer.legacySection().serialize(resistanceComponent)),
+                        Arrays.asList(ChatColor.GRAY + "Value: " + (resistance == 0 ? ChatColor.RED + "DISABLED" : LegacyText.LEGACY.serialize(resistanceComponent)),
                                 "",
                                 ChatColor.GRAY + "If the noise is enabled, then the price of the",
                                 ChatColor.GRAY + "item will slowly tend to stay " + ChatColor.UNDERLINE + "BELOW this value.",

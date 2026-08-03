@@ -7,7 +7,7 @@ import me.bounser.nascraft.formatter.Formatter;
 import me.bounser.nascraft.formatter.Style;
 import me.bounser.nascraft.market.MarketManager;
 import me.bounser.nascraft.market.unit.Item;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -201,8 +201,8 @@ public class NascraftLogListener implements Listener {
 
                 String price = ChatColor.BLUE + (trade.isBuy() ? "Price paid: " : "Price received: ");
 
-                if (trade.getAmount() == 1) price += LegacyComponentSerializer.legacySection().serialize(MiniMessage.miniMessage().deserialize(Formatter.format(trade.getItem().getCurrency(), trade.getValue(), Style.ROUND_BASIC)));
-                else price += ChatColor.GREEN + LegacyComponentSerializer.legacySection().serialize(MiniMessage.miniMessage().deserialize(Formatter.format(trade.getItem().getCurrency(), trade.getValue(), Style.ROUND_BASIC))) + ChatColor.BLUE + " → " + LegacyComponentSerializer.legacySection().serialize(MiniMessage.miniMessage().deserialize(Formatter.format(trade.getItem().getCurrency(), trade.getValue()/trade.getAmount(), Style.ROUND_BASIC))) + ChatColor.BLUE + " each";
+                if (trade.getAmount() == 1) price += LegacyText.LEGACY.serialize(MiniMessage.miniMessage().deserialize(Formatter.format(trade.getItem().getCurrency(), trade.getValue(), Style.ROUND_BASIC)));
+                else price += ChatColor.GREEN + LegacyText.LEGACY.serialize(MiniMessage.miniMessage().deserialize(Formatter.format(trade.getItem().getCurrency(), trade.getValue(), Style.ROUND_BASIC))) + ChatColor.BLUE + " → " + LegacyText.LEGACY.serialize(MiniMessage.miniMessage().deserialize(Formatter.format(trade.getItem().getCurrency(), trade.getValue()/trade.getAmount(), Style.ROUND_BASIC))) + ChatColor.BLUE + " each";
 
                 lore.add(price);
 

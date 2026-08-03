@@ -13,7 +13,7 @@ import me.bounser.nascraft.managers.DebtManager;
 import me.bounser.nascraft.managers.currencies.CurrenciesManager;
 import me.bounser.nascraft.market.unit.Item;
 import me.bounser.nascraft.portfolio.Portfolio;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -45,7 +45,7 @@ public class TopMenu implements MenuPage {
 
         Component title = MiniMessage.miniMessage().deserialize(Lang.get().message(Message.PORTFOLIO_TOP_TITLE));
 
-        gui = Bukkit.createInventory(null, config.getTopSize(), LegacyComponentSerializer.legacySection().serialize(title));
+        gui = Bukkit.createInventory(null, config.getTopSize(), LegacyText.LEGACY.serialize(title));
 
         // Back button
 
@@ -56,7 +56,7 @@ public class TopMenu implements MenuPage {
                     config.getTopBackSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getTopBackMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(backComponent)
+                            LegacyText.LEGACY.serialize(backComponent)
                     ));
         }
 
@@ -69,7 +69,7 @@ public class TopMenu implements MenuPage {
 
             ItemStack filler = MarketMenuManager.getInstance().generateItemStack(
                     material,
-                    LegacyComponentSerializer.legacySection().serialize(fillerComponent)
+                    LegacyText.LEGACY.serialize(fillerComponent)
             );
 
             for (int i : fillers.get(material))
@@ -102,7 +102,7 @@ public class TopMenu implements MenuPage {
                 name = MiniMessage.miniMessage().deserialize(Lang.get().message(Message.PORTFOLIO_TOP_NAME_OTHERS).replace("[POS]", String.valueOf(i)));
             }
 
-            meta.setDisplayName(LegacyComponentSerializer.legacySection().serialize(name));
+            meta.setDisplayName(LegacyText.LEGACY.serialize(name));
 
             List<String> lore = new ArrayList<>();
 
@@ -135,7 +135,7 @@ public class TopMenu implements MenuPage {
 
             for (String line : loreAsLine.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                lore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                lore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             meta.setLore(lore);

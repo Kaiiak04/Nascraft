@@ -10,7 +10,7 @@ import me.bounser.nascraft.formatter.Style;
 import me.bounser.nascraft.market.limitorders.LimitOrder;
 import me.bounser.nascraft.market.limitorders.LimitOrdersManager;
 import me.bounser.nascraft.market.limitorders.OrderType;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -43,7 +43,7 @@ public class LimitOrdersMenu implements MenuPage {
 
         Component title = MiniMessage.miniMessage().deserialize(Lang.get().message(Message.GUI_LIMIT_ORDERS_TITLE));
 
-        gui = Bukkit.createInventory(null, config.getLimitOrdersMenuSize(), LegacyComponentSerializer.legacySection().serialize(title));
+        gui = Bukkit.createInventory(null, config.getLimitOrdersMenuSize(), LegacyText.LEGACY.serialize(title));
 
         // Back button
 
@@ -54,7 +54,7 @@ public class LimitOrdersMenu implements MenuPage {
                     config.getLimitOrdersMenuBackSlot(),
                     MarketMenuManager.getInstance().generateItemStack(
                             config.getLimitOrdersMenuBackMaterial(),
-                            LegacyComponentSerializer.legacySection().serialize(backComponent)
+                            LegacyText.LEGACY.serialize(backComponent)
                     ));
         }
 
@@ -64,7 +64,7 @@ public class LimitOrdersMenu implements MenuPage {
 
         ItemStack filler = MarketMenuManager.getInstance().generateItemStack(
                 config.getLimitOrdersMenuFillersMaterial(),
-                LegacyComponentSerializer.legacySection().serialize(fillerComponent)
+                LegacyText.LEGACY.serialize(fillerComponent)
         );
 
         for (int i : config.getLimitOrdersMenuFillersSlots())
@@ -159,7 +159,7 @@ public class LimitOrdersMenu implements MenuPage {
 
             for (String line : lore.split("\\n")) {
                 Component loreComponent = MiniMessage.miniMessage().deserialize(line);
-                itemLore.add(LegacyComponentSerializer.legacySection().serialize(loreComponent));
+                itemLore.add(LegacyText.LEGACY.serialize(loreComponent));
             }
 
             ItemStack limit = MarketMenuManager.getInstance().generateItemStack(

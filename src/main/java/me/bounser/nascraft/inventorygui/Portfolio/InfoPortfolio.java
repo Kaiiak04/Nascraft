@@ -8,7 +8,7 @@ import me.bounser.nascraft.config.lang.Message;
 import me.bounser.nascraft.inventorygui.MenuPage;
 import me.bounser.nascraft.portfolio.Portfolio;
 import me.bounser.nascraft.scheduler.FoliaScheduler;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
@@ -55,7 +55,7 @@ public class InfoPortfolio implements MenuPage {
 
         CartographyWindow window = CartographyWindow.single()
                 .setViewer(player)
-                .setTitle(LegacyComponentSerializer.legacySection().serialize(title))
+                .setTitle(LegacyText.LEGACY.serialize(title))
                 .setGui(gui)
                 .build();
 
@@ -64,7 +64,7 @@ public class InfoPortfolio implements MenuPage {
             public void run() {
                 Component title = MiniMessage.miniMessage().deserialize(Lang.get().message(Message.PORTFOLIO_TITLE));
 
-                Inventory inventory = Bukkit.createInventory(player, 45, LegacyComponentSerializer.legacySection().serialize(title));
+                Inventory inventory = Bukkit.createInventory(player, 45, LegacyText.LEGACY.serialize(title));
                 player.openInventory(inventory);
                 player.setMetadata("NascraftPortfolio", new FixedMetadataValue(Nascraft.getInstance(),false));
 
@@ -75,7 +75,7 @@ public class InfoPortfolio implements MenuPage {
                     public void run() {
                         Component title = MiniMessage.miniMessage().deserialize(Lang.get().message(Message.PORTFOLIO_TITLE));
 
-                        Inventory inventory = Bukkit.createInventory(player, 45, LegacyComponentSerializer.legacySection().serialize(title));
+                        Inventory inventory = Bukkit.createInventory(player, 45, LegacyText.LEGACY.serialize(title));
                         player.openInventory(inventory);
                         player.setMetadata("NascraftPortfolio", new FixedMetadataValue(Nascraft.getInstance(),false));
 

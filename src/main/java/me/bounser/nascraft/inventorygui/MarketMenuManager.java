@@ -7,7 +7,7 @@ import me.bounser.nascraft.formatter.RoundUtils;
 import me.bounser.nascraft.formatter.Style;
 import me.bounser.nascraft.market.resources.Category;
 import me.bounser.nascraft.market.unit.Item;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
+import me.bounser.nascraft.formatter.LegacyText;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Material;
@@ -98,7 +98,7 @@ public class MarketMenuManager {
 
         for (String line : itemLore.split("\\n")) {
             Component loreSegment = MiniMessage.miniMessage().deserialize(line);
-            itemLoreLines.add(LegacyComponentSerializer.legacySection().serialize(loreSegment));
+            itemLoreLines.add(LegacyText.LEGACY.serialize(loreSegment));
         }
 
         return itemLoreLines;

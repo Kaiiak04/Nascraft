@@ -2,7 +2,6 @@ package me.bounser.nascraft.managers.currencies;
 
 import me.bounser.nascraft.Nascraft;
 import me.bounser.nascraft.formatter.Formatter;
-import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 
