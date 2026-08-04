@@ -8,7 +8,9 @@ plugins {
 }
 
 group = "me.bounser"
-version = "1.9.2"
+// Fork build. Upstream master still declares 1.9.2 even though it is well past the v1.9.2 release,
+// so this suffix is what distinguishes this jar from an official one at a glance.
+version = "1.9.2-fork.1"
 
 java {
     sourceCompatibility = JavaVersion.VERSION_21
